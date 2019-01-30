@@ -1,0 +1,35 @@
+.radio-button {
+  width: 150px;
+  height: 50px;
+  border: solid 1px #69CDBB;
+  display: inline-block;
+  border-radius: 50px;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+}
+
+.inactive:hover {
+  background-color: #69CDBB;
+  border: solid 1px #69CDBB;
+  color: white;
+}
+
+.active {
+  background-color: #69CDBB;
+  color: white;
+}
+
+.radio-button-input {
+  display: none;
+  cursor: pointer;
+}
+
+.radio-button-label {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  cursor: pointer;
+}
