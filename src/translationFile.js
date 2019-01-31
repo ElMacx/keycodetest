@@ -10,7 +10,8 @@ const translation = {
   "label.hover.next_button_disabled":
     "please select an option before going to the next question",
   "label.hover.next_button_enabled": "click here to go to the next question",
-  "label.greetings_answer": "thank you for answering the questions!"
+  "label.greetings_answer": "thank you for answering the questions!",
+  "label.loading": "loading..."
 };
 
 const capitalizeFirstLetter = str => {

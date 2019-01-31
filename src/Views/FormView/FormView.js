@@ -3,8 +3,9 @@ import { getQuestionList } from "../../API/FetchData";
 import { QuestionView } from "../QuestionView/QuestionView";
 import { OutcomeView } from "../OutcomeView/OutcomeView";
 import { HeaderBar } from "../HeaderBar/HeaderBar";
-import { NotFoundView } from "../NotFoundView/NotFoundView";
+import { NotFoundView } from "../NotFoundView/NotFoundView";
 import { getLabel } from "../../translationFile";
+import { LoadingView } from "../LoadingView/LoadingView";
 
 import "./FormView.css";
 
@@ -20,6 +21,7 @@ export class FormView extends Component {
       finalOutcome: null,
       questionQueue: [],
       error: null,
+      isLoading: true
     };
   }
 
@@ -28,25 +30,34 @@ export class FormView extends Component {
   };
 
   getQuestionListFromAPI = () => {
+    this.setState({ isLoading: true });
     getQuestionList()
       .then(result => {
         this.setState({
           questions: result.questions,
           outcomes: result.outcomes,
-          currentQuestion: result.questions[0]
+          currentQuestion: result.questions[0],
+          isLoading: false
         });
       })
       .catch(err => {
-        this.setState({ error: err });
-        console.warn(getLabel('label.error_questions_call', false), err);
-      })
+        this.setState({
+          error: err,
+          isLoading: false
+        });
+        console.warn(getLabel("label.error_questions_call", false), err);
+      });
   };
 
   getBestOutcome = () => {
     let bestOutcome = null;
     this.state.currentQuestion.next.forEach(next => {
-      if ((next.max_score && next.max_score >= this.state.patientScore && !bestOutcome)
-          || (!next.max_score && !bestOutcome)) {
+      if (
+        (next.max_score &&
+          next.max_score >= this.state.patientScore &&
+          !bestOutcome) ||
+        (!next.max_score && !bestOutcome)
+      ) {
         bestOutcome = next.outcome;
       }
     });
@@ -54,12 +65,19 @@ export class FormView extends Component {
   };
 
   goToPreviousQuestion = () => {
-    const previousQuestion = this.state.questionQueue[this.state.questionQueue.length - 1];
+    const previousQuestion = this.state.questionQueue[
+      this.state.questionQueue.length - 1
+    ];
     this.setState({
-      questionQueue: this.state.questionQueue.filter(q => q.question.id !== previousQuestion.question.id),
+      questionQueue: this.state.questionQueue.filter(
+        q => q.question.id !== previousQuestion.question.id
+      ),
       currentQuestion: previousQuestion.question,
-      patientScore: this.state.patientScore - previousQuestion.question.answers.find(
-          q => q.id === previousQuestion.idAnswer).score
+      patientScore:
+        this.state.patientScore -
+        previousQuestion.question.answers.find(
+          q => q.id === previousQuestion.idAnswer
+        ).score
     });
   };
 
@@ -83,7 +101,9 @@ export class FormView extends Component {
       this.setState({ finalOutcome: outcomes.find(e => e.id === outcomeId) });
     } else {
       //if multiple answers possible
-      nextQuestionId = currentQuestion.next.find(a => a.answered === currentAnswer.id).next_question;
+      nextQuestionId = currentQuestion.next.find(
+        a => a.answered === currentAnswer.id
+      ).next_question;
     }
     this.setState({
       currentAnswer: null,
@@ -116,7 +136,9 @@ export class FormView extends Component {
 
   getProgressBarPercentage = () => {
     const questionIndex = this.state.currentQuestion
-      ? this.state.questions.map(q => q.id).indexOf(this.state.currentQuestion.id)
+      ? this.state.questions
+          .map(q => q.id)
+          .indexOf(this.state.currentQuestion.id)
       : -1;
     if (questionIndex === -1) {
       if (this.state.finalOutcome) {
@@ -129,34 +151,24 @@ export class FormView extends Component {
   };
 
   displaySuccessView = () => {
-    const {
-      finalOutcome,
-      currentQuestion,
-      currentAnswer,
-    } = this.state;
-    return (
-      !finalOutcome ? (
-        <QuestionView
-          currentQuestion={currentQuestion}
-          currentAnswer={currentAnswer}
-          handleOptionChange={this.handleOptionChange}
-          goToNextQuestion={this.goToNextQuestion}
-        />
-      ) : (
-        <OutcomeView
-          restartProcess={this.restartProcess}
-          finalOutcome={finalOutcome}
-        />
-      )
-    )
-  }
+    const { finalOutcome, currentQuestion, currentAnswer } = this.state;
+    return !finalOutcome ? (
+      <QuestionView
+        currentQuestion={currentQuestion}
+        currentAnswer={currentAnswer}
+        handleOptionChange={this.handleOptionChange}
+        goToNextQuestion={this.goToNextQuestion}
+      />
+    ) : (
+      <OutcomeView
+        restartProcess={this.restartProcess}
+        finalOutcome={finalOutcome}
+      />
+    );
+  };
 
   render() {
-    const {
-      finalOutcome,
-      questionQueue,
-      error,
-    } = this.state;
+    const { finalOutcome, questionQueue, error, isLoading } = this.state;
     return (
       <div className="form-view">
         <HeaderBar
@@ -165,8 +177,13 @@ export class FormView extends Component {
           finalOutcome={finalOutcome}
           goToPreviousQuestion={this.goToPreviousQuestion}
         />
-        { !error ? this.displaySuccessView() : <NotFoundView retryClickEvent={this.getQuestionListFromAPI}/>}
+        {
+          !isLoading ? (
+          !error ? (this.displaySuccessView()) : (
+            <NotFoundView retryClickEvent={this.getQuestionListFromAPI} />))
+            : (<LoadingView />)
+        }
       </div>
-    )
+    );
   }
 }
