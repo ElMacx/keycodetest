@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './OutcomeForm.css'
-import { CustomButton } from '../CustomButton/CustomButton';
+import './OutcomeView.css'
+import { CustomButton } from '../../Components/CustomButton/CustomButton';
 
-export class OutcomeForm extends Component {
+export class OutcomeView extends Component {
 
   bookApointment = () => {
     console.log('Do booking stuff')

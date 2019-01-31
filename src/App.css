@@ -1,12 +1,1 @@
-body {
-  font-family: 'Montserrat', sans-serif
-}
 
-.app {
-  margin: 0 auto;
-  margin-top: 50px;
-  width: 370px;
-  height: 650px;
-  border: solid 1px black;
-  position: relative;
-}

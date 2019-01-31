@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './QuestionForm.css';
-import { RadioButton } from '../RadioButton/RadioButton';
-import { CustomButton } from '../CustomButton/CustomButton';
+import './QuestionView.css';
+import { RadioButton } from '../../Components/RadioButton/RadioButton';
+import { CustomButton } from '../../Components/CustomButton/CustomButton';
 
-export class QuestionForm extends Component {
+export class QuestionView extends Component {
   render() {
     const { currentQuestion, currentAnswer, handleOptionChange, goToNextQuestion } = this.props;
     return (

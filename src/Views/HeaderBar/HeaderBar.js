@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './Header.css'
-import { ProgressBar } from '../ProgressBar/ProgressBar';
+import './HeaderBar.css'
+import { ProgressBar } from '../../Components/ProgressBar/ProgressBar';
 
-export class Header extends Component {
+export class HeaderBar extends Component {
   render() {
     const { questionQueue, finalOutcome, goToPreviousQuestion, progressBarPercentage } = this.props;
     return (
