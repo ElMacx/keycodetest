@@ -15,11 +15,10 @@ export const HeaderBar = props => {
     <div className="app-header">
       {questionQueue.length > 0 && !finalOutcome ? (
         <button className="previous-button" onClick={goToPreviousQuestion}>
-          <LeftArrow/>
-        </button>
-      ) : (
-        <div />
-      )}
+          <LeftArrow />
+        </button>)
+        : (<div />)
+      }
       <p id="app-title">Heartburn Checker</p>
       <ProgressBar percentage={progressBarPercentage} />
     </div>
@@ -30,5 +29,5 @@ HeaderBar.propTypes = {
   questionQueue: PropTypes.array,
   finalOutcome: PropTypes.object,
   goToPreviousQuestion: PropTypes.func,
-  progressBarPercentage: PropTypes.number.isRequired,
+  progressBarPercentage: PropTypes.number.isRequired
 };

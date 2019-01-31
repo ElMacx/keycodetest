@@ -44,19 +44,12 @@ export class FormView extends Component {
   };
 
   goToPreviousQuestion = () => {
-    const previousQuestion = this.state.questionQueue[
-      this.state.questionQueue.length - 1
-    ];
+    const previousQuestion = this.state.questionQueue[this.state.questionQueue.length - 1];
     this.setState({
-      questionQueue: this.state.questionQueue.filter(
-        q => q.question.id !== previousQuestion.question.id
-      ),
+      questionQueue: this.state.questionQueue.filter(q => q.question.id !== previousQuestion.question.id),
       currentQuestion: previousQuestion.question,
-      patientScore:
-        this.state.patientScore -
-        previousQuestion.question.answers.find(
-          q => q.id === previousQuestion.idAnswer
-        ).score
+      patientScore: this.state.patientScore - previousQuestion.question.answers.find(
+          q => q.id === previousQuestion.idAnswer).score
     });
   };
 
@@ -80,9 +73,7 @@ export class FormView extends Component {
       this.setState({ finalOutcome: outcomes.find(e => e.id === outcomeId) });
     } else {
       //if multiple answers possible
-      nextQuestionId = currentQuestion.next.find(
-        a => a.answered === currentAnswer.id
-      ).next_question;
+      nextQuestionId = currentQuestion.next.find(a => a.answered === currentAnswer.id).next_question;
     }
     this.setState({
       currentAnswer: null,
@@ -115,9 +106,7 @@ export class FormView extends Component {
 
   getProgressBarPercentage = () => {
     const questionIndex = this.state.currentQuestion
-      ? this.state.questions
-          .map(q => q.id)
-          .indexOf(this.state.currentQuestion.id)
+      ? this.state.questions.map(q => q.id).indexOf(this.state.currentQuestion.id)
       : -1;
     if (questionIndex === -1) {
       if (this.state.finalOutcome) {
