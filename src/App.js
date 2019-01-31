@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ProgressBar } from './Components/ProgressBar/ProgressBar';
 import { RadioButton } from './Components/RadioButton/RadioButton';
+import { getQuestionList } from './API/FetchData';
 
 import './App.css';
 
@@ -21,22 +22,15 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch("https://gist.githubusercontent.com/jakber/458d168c83ff8797219a1b8f7db1cfab/raw/e0161e2127ead0d65ffe98ffaa3386274cc2858c/heartburn.json", {
-      method: "GET",
-      headers: {
-        Accept: 'application/json'
-      }
+    getQuestionList().then(result => {
+      this.setState({
+        isLoaded: true,
+        questions: result.questions,
+        outcomes: result.outcomes,
+        currentQuestion: result.questions[ 0 ]
+      });
     })
-      .then(res => res.json())
-      .then((result) => {
-          this.setState({
-            isLoaded: true,
-            questions: result.questions,
-            outcomes: result.outcomes,
-            currentQuestion: result.questions[ 0 ]
-          });
-      })
-      .catch(err => console.warn('err getting questions list ', err))
+    .catch(err => console.log('err getting question list ', err));
   }
 
   getBestOutcome = () => {
