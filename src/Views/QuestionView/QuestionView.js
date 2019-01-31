@@ -20,7 +20,7 @@ export const QuestionView = props => {
           return (
             <RadioButton
               key={ans.id}
-              currentAnswer={currentAnswer}
+              isSelected={currentAnswer && currentAnswer.id === ans.id}
               ans={ans}
               handleOptionChange={handleOptionChange}
             />
@@ -28,6 +28,7 @@ export const QuestionView = props => {
         })}
       </div>
       <CustomButton
+        id="next-button"
         isDisabled={!currentAnswer}
         clickEvent={goToNextQuestion}
         buttonText="Next"

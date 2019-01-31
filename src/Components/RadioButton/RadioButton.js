@@ -16,11 +16,11 @@ export class RadioButton extends Component {
   };
 
   render() {
-    const { currentAnswer, ans, handleOptionChange } = this.props;
+    const { ans, handleOptionChange, isSelected } = this.props;
     return (
       <div
         className={`radio-button ${
-          currentAnswer && currentAnswer.id === ans.id ? "active" : "inactive"
+          isSelected ? "active" : "inactive"
         }`}
         id={ans.id}
         onClick={handleOptionChange}
@@ -29,7 +29,7 @@ export class RadioButton extends Component {
       >
         <label className="radio-button-label">
           {ans.label}
-          {(currentAnswer && currentAnswer.id === ans.id) ||
+          {isSelected ||
           this.state.isMouseInside ? (
             <CheckMarkWhite className="checkmark-icon" />
           ) : (

@@ -19,7 +19,7 @@ export const HeaderBar = props => {
       ) : (
         <div />
       )}
-      <p>Heartburn Checker</p>
+      <p id="app-title">Heartburn Checker</p>
       <ProgressBar percentage={progressBarPercentage} />
     </div>
   );

@@ -24,7 +24,7 @@ export class OutcomeView extends Component {
         ) : (
           <div />
         )}
-        <span className="restart-button" onClick={restartProcess}>
+        <span id="restart-text" className="restart-button" onClick={restartProcess}>
           Back to the start screen
         </span>
       </div>
