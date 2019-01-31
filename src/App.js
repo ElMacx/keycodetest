@@ -1,12 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { FormView } from "./Views/FormView/FormView";
 
 import "./App.css";
 
-class App extends Component {
-  render() {
-    return <FormView />;
-  }
+export const App = () => {
+    return (<FormView />);
 }
 
 export default App;
