@@ -62,12 +62,12 @@ class App extends Component {
     const { patientScore, currentQuestion, outcomes, currentAnswer, questions, questionQueue } = this.state;
     this.setState({ patientScore: patientScore + currentAnswer.score });
     let nextQuestionId = null;
-    if (currentQuestion.next.length === 1) {
+    if (currentQuestion.next.length === 1) { // If there is only one possible next question
       nextQuestionId = currentQuestion.next[ 0 ].next_question;
-    } else if (this.state.currentQuestion.next.some(q => q.outcome)) {
+    } else if (this.state.currentQuestion.next.some(q => q.outcome)) { // if there is an outcome meaning that we are at the end of the questions
       let outcomeId = this.getBestOutcome();
       this.setState({ finalOutcome: outcomes.find(e => e.id === outcomeId )})
-    } else {
+    } else { //if multiple answers possible
       nextQuestionId = currentQuestion.next.find(e => e.answered === currentAnswer.id).next_question;
     }
     this.setState({
@@ -81,6 +81,7 @@ class App extends Component {
     this.setState({ currentAnswer: this.state.currentQuestion.answers.find(e => e.id === event.currentTarget.id) });
   }
 
+  // reset when click on the "back to the start" button
   restartProcess = () => {
     this.setState({
       patientScore: 0,
