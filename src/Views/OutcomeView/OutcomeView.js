@@ -21,6 +21,7 @@ export class OutcomeView extends Component {
             isDisabled={false}
             clickEvent={this.bookApointment}
             buttonText="Book an meeting"
+            hoverText="Click to book a meeting with a doctor"
           />
         ) : (
           <div />

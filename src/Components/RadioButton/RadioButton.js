@@ -17,7 +17,7 @@ export class RadioButton extends Component {
   };
 
   render() {
-    const { ans, handleOptionChange, isSelected } = this.props;
+    const { ans, handleOptionChange, isSelected, hoverText } = this.props;
     return (
       <div
         className={`radio-button ${isSelected ? "active" : "inactive"}`}
@@ -25,6 +25,7 @@ export class RadioButton extends Component {
         onClick={handleOptionChange}
         onMouseEnter={this.handleMouseHover}
         onMouseLeave={this.handleMouseHover}
+        title={hoverText}
       >
         <label className="radio-button-label">
           {ans.label}
@@ -50,4 +51,5 @@ RadioButton.propTypes = {
   ans: PropTypes.object.isRequired,
   handleOptionChange: PropTypes.func,
   isSelected: PropTypes.bool,
+  hoverText: PropTypes.string,
 };

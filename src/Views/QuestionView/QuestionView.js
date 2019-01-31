@@ -24,6 +24,7 @@ export const QuestionView = props => {
               isSelected={currentAnswer && currentAnswer.id === ans.id}
               ans={ans}
               handleOptionChange={handleOptionChange}
+              hoverText={ans.label}
             />
           );
         })}
@@ -33,6 +34,7 @@ export const QuestionView = props => {
         isDisabled={!currentAnswer}
         clickEvent={goToNextQuestion}
         buttonText="Next"
+        hoverText={!currentAnswer ? 'Please select an option before going to the next question' : 'Click here to go to the next question'}
       />
     </div>
   ) : (

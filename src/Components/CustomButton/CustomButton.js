@@ -5,10 +5,11 @@ import { ReactComponent as RightArrowWhite } from "../../icons/ic-arrow-right-wh
 import PropTypes from 'prop-types';
 
 export const CustomButton = props => {
-  const { isDisabled, clickEvent, buttonText } = props;
+  const { isDisabled, clickEvent, buttonText, hoverText } = props;
   return (
     <button
       disabled={isDisabled}
+      title={hoverText}
       className={
         isDisabled
           ? "next-button-position global-button disabled-button"
@@ -32,4 +33,5 @@ CustomButton.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
   clickEvent: PropTypes.func,
   buttonTest: PropTypes.string,
+  hoverText: PropTypes.string,
 };
