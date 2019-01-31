@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./OutcomeView.css";
 import { CustomButton } from "../../Components/CustomButton/CustomButton";
 import { ReactComponent as GrayRectangle } from "../../icons/ic-rectangle-gray.svg";
+import PropTypes from "prop-types";
 
 export class OutcomeView extends Component {
   bookApointment = () => {
@@ -31,3 +32,8 @@ export class OutcomeView extends Component {
     );
   }
 }
+
+OutcomeView.propTypes = {
+  finalOutcome: PropTypes.object,
+  restartProcess: PropTypes.func,
+};

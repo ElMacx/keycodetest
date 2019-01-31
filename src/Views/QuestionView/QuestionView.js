@@ -3,6 +3,7 @@ import "./QuestionView.css";
 import { RadioButton } from "../../Components/RadioButton/RadioButton";
 import { CustomButton } from "../../Components/CustomButton/CustomButton";
 import { ReactComponent as GrayRectangle } from "../../icons/ic-rectangle-gray.svg";
+import PropTypes from "prop-types";
 
 export const QuestionView = props => {
   const {
@@ -37,4 +38,11 @@ export const QuestionView = props => {
   ) : (
     <div />
   );
+};
+
+QuestionView.propTypes = {
+  currentQuestion: PropTypes.object,
+  currentAnswer: PropTypes.object,
+  handleOptionChange: PropTypes.func,
+  goToNextQuestion: PropTypes.func,
 };

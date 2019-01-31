@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./RadioButton.css";
 import { ReactComponent as CheckMarkGreen } from "../../icons/ic-checkmark.svg";
 import { ReactComponent as CheckMarkWhite } from "../../icons/ic-checkmark-white.svg";
+import PropTypes from "prop-types";
 
 export class RadioButton extends Component {
   constructor(props) {
@@ -19,9 +20,7 @@ export class RadioButton extends Component {
     const { ans, handleOptionChange, isSelected } = this.props;
     return (
       <div
-        className={`radio-button ${
-          isSelected ? "active" : "inactive"
-        }`}
+        className={`radio-button ${isSelected ? "active" : "inactive"}`}
         id={ans.id}
         onClick={handleOptionChange}
         onMouseEnter={this.handleMouseHover}
@@ -29,8 +28,7 @@ export class RadioButton extends Component {
       >
         <label className="radio-button-label">
           {ans.label}
-          {isSelected ||
-          this.state.isMouseInside ? (
+          {isSelected || this.state.isMouseInside ? (
             <CheckMarkWhite className="checkmark-icon" />
           ) : (
             <CheckMarkGreen className="checkmark-icon" />
@@ -47,3 +45,9 @@ export class RadioButton extends Component {
     );
   }
 }
+
+RadioButton.propTypes = {
+  ans: PropTypes.object.isRequired,
+  handleOptionChange: PropTypes.func,
+  isSelected: PropTypes.bool,
+};

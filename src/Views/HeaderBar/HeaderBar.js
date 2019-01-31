@@ -2,6 +2,7 @@ import React from "react";
 import "./HeaderBar.css";
 import { ProgressBar } from "../../Components/ProgressBar/ProgressBar";
 import { ReactComponent as LeftArrow } from "../../icons/ic-arrow-left-green.svg";
+import PropTypes from "prop-types";
 
 export const HeaderBar = props => {
   const {
@@ -23,4 +24,11 @@ export const HeaderBar = props => {
       <ProgressBar percentage={progressBarPercentage} />
     </div>
   );
+};
+
+HeaderBar.propTypes = {
+  questionQueue: PropTypes.array,
+  finalOutcome: PropTypes.object,
+  goToPreviousQuestion: PropTypes.func,
+  progressBarPercentage: PropTypes.number.isRequired,
 };
