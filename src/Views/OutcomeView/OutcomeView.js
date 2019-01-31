@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./OutcomeView.css";
 import { CustomButton } from "../../Components/CustomButton/CustomButton";
+import { ReactComponent as GrayRectangle } from "../../icons/ic-rectangle-gray.svg";
 
 export class OutcomeView extends Component {
   bookApointment = () => {
@@ -12,15 +13,7 @@ export class OutcomeView extends Component {
     return (
       <div className="outcome-form">
         <h2>Thank you for answering the questions!</h2>
-        <svg width="40" height="5">
-          <rect
-            width="40"
-            height="3"
-            rx="1"
-            ry="1"
-            className="rect-under-question-text"
-          />
-        </svg>
+        <GrayRectangle/>
         <p>{finalOutcome.text}</p>
         {finalOutcome.show_booking_button ? (
           <CustomButton
