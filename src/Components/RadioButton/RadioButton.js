@@ -2,12 +2,13 @@ import React from 'react';
 import './RadioButton.css';
 
 export const RadioButton = (props) => {
+  const { currentAnswer, ans, handleOptionChange } = props;
   return (
-    <div className={ `radio-button ${(props.currentAnswer && props.currentAnswer.id === props.ans.id) ? 'active' : 'inactive'}` }
-        id={props.ans.id} onClick={props.handleOptionChange}>
+    <div className={ `radio-button ${(currentAnswer && currentAnswer.id === ans.id) ? 'active' : 'inactive'}` }
+        id={ans.id} onClick={handleOptionChange}>
       <label className="radio-button-label">
-        { props.ans.label }
-        <input className="radio-button-input" type="radio" name="name" id={props.ans.id} onChange={props.handleOptionChange}/>
+        { ans.label }
+        <input className="radio-button-input" type="radio" name="name" id={ans.id} onChange={handleOptionChange}/>
       </label>
     </div>
     )
