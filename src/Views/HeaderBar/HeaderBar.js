@@ -13,12 +13,17 @@ export const HeaderBar = props => {
   } = props;
   return (
     <div className="app-header">
-      {questionQueue.length > 0 && !finalOutcome ? (
-        <button className="previous-button" onClick={goToPreviousQuestion}>
-          <LeftArrow />
-        </button>)
-        : (<div />)
-      }
+      <button
+        className={
+          !(questionQueue.length > 0 && !finalOutcome)
+            ? "previous-button previous-disabled"
+            : "previous-button"
+        }
+        onClick={goToPreviousQuestion}
+        disabled={!(questionQueue.length > 0 && !finalOutcome)}
+      >
+        <LeftArrow />
+      </button>
       <p id="app-title">Heartburn Checker</p>
       <ProgressBar percentage={progressBarPercentage} />
     </div>
