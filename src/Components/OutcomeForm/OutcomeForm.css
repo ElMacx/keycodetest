@@ -1,0 +1,19 @@
+.outcome-form {
+  margin: 15% 0 0 20px;
+}
+
+.outcome-form h2 {
+  font-weight: 800;
+  font-size: 25px;
+  color: #686868;
+  margin: 0;
+}
+
+.restart-button {
+  position: absolute;
+  bottom: 15px;
+  right: 90px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #69CDBB;
+}

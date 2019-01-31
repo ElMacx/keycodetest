@@ -1,0 +1,39 @@
+.global-button {
+  width: 250px;
+  height: 40px;
+  background-color: #69CDBB;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  right: 60px;
+  position: absolute;
+}
+
+.global-button:hover {
+  background-color: #83dbcb;
+}
+
+.next-button-position {
+  bottom: 15px;
+}
+
+.disabled-button {
+  bottom: 15px;
+  background-color: #dbdbdb;
+  color: #6b6a6a;
+  cursor: not-allowed;
+}
+
+.disabled-button:hover {
+  background-color: #dbdbdb;
+}
+
+.next-button-icon {
+  position: absolute;
+  right: 20px;
+  top: 11px;
+}

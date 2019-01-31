@@ -2,107 +2,11 @@ body {
   font-family: 'Montserrat', sans-serif
 }
 
-.App {
+.app {
   margin: 0 auto;
   margin-top: 50px;
   width: 370px;
   height: 650px;
   border: solid 1px black;
   position: relative;
-}
-
-.App-header {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.App-header p {
-  font-weight: bold;
-  color: #686868;
-}
-
-.global-button {
-  width: 250px;
-  height: 40px;
-  background-color: #69CDBB;
-  border: 0;
-  border-radius: 5px;
-  color: white;
-  font-size: 15px;
-  font-family: Montserrat, sans-serif;
-  font-weight: bold;
-  cursor: pointer;
-  right: 60px;
-  position: absolute;
-}
-
-.global-button:hover {
-  background-color: #83dbcb;
-}
-
-.next-button-position {
-  bottom: 15px;
-}
-
-.disabled-button {
-  bottom: 15px;
-  background-color: #dbdbdb;
-  color: #6b6a6a;
-  cursor: not-allowed;
-}
-
-.disabled-button:hover {
-  background-color: #dbdbdb;
-}
-
-.rect-under-question-text {
-  fill: #ededed;
-}
-
-.Question-form {
-  margin: 30% 0 0 20px;
-}
-
-.Question-form p {
-  font-weight: 800;
-  font-size: 25px;
-  color: #686868;
-  margin: 0;
-}
-
-.outcome-form {
-  margin: 15% 0 0 20px;
-}
-
-.outcome-form h2 {
-  font-weight: 800;
-  font-size: 25px;
-  color: #686868;
-  margin: 0;
-}
-
-.radio-button-container {
-  margin-top: 35px;
-}
-
-.previous-button {
-  position: absolute;
-  left: 15px;
-  cursor: pointer;
-  border: 0;
-}
-
-.restart-button {
-  position: absolute;
-  bottom: 15px;
-  right: 90px;
-  cursor: pointer;
-  text-decoration: underline;
-  color: #69CDBB;
-}
-
-.next-button-icon {
-  position: absolute;
-  right: 20px;
-  top: 11px;
 }

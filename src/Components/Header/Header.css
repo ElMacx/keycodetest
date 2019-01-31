@@ -1,0 +1,16 @@
+.app-header {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.app-header p {
+  font-weight: bold;
+  color: #686868;
+}
+
+.previous-button {
+  position: absolute;
+  left: 15px;
+  cursor: pointer;
+  border: 0;
+}
