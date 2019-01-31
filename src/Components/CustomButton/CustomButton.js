@@ -30,7 +30,7 @@ export const CustomButton = props => {
 };
 
 CustomButton.propTypes = {
-  isDisabled: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool,
   clickEvent: PropTypes.func,
   buttonTest: PropTypes.string,
   hoverText: PropTypes.string,

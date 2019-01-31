@@ -3,6 +3,8 @@ import { getQuestionList } from "../../API/FetchData";
 import { QuestionView } from "../QuestionView/QuestionView";
 import { OutcomeView } from "../OutcomeView/OutcomeView";
 import { HeaderBar } from "../HeaderBar/HeaderBar";
+import { NotFoundView } from "../NotFoundView/NotFoundView";
+import { getLabel } from "../../translationFile";
 
 import "./FormView.css";
 
@@ -16,11 +18,16 @@ export class FormView extends Component {
       currentAnswer: null,
       currentQuestion: null,
       finalOutcome: null,
-      questionQueue: []
+      questionQueue: [],
+      error: null,
     };
   }
 
   componentDidMount = () => {
+    this.getQuestionListFromAPI();
+  };
+
+  getQuestionListFromAPI = () => {
     getQuestionList()
       .then(result => {
         this.setState({
@@ -29,7 +36,10 @@ export class FormView extends Component {
           currentQuestion: result.questions[0]
         });
       })
-      .catch(err => console.log("err getting question list ", err));
+      .catch(err => {
+        this.setState({ error: err });
+        console.warn(getLabel('label.error_questions_call', false), err);
+      })
   };
 
   getBestOutcome = () => {
@@ -118,12 +128,34 @@ export class FormView extends Component {
     }
   };
 
+  displaySuccessView = () => {
+    const {
+      finalOutcome,
+      currentQuestion,
+      currentAnswer,
+    } = this.state;
+    return (
+      !finalOutcome ? (
+        <QuestionView
+          currentQuestion={currentQuestion}
+          currentAnswer={currentAnswer}
+          handleOptionChange={this.handleOptionChange}
+          goToNextQuestion={this.goToNextQuestion}
+        />
+      ) : (
+        <OutcomeView
+          restartProcess={this.restartProcess}
+          finalOutcome={finalOutcome}
+        />
+      )
+    )
+  }
+
   render() {
     const {
       finalOutcome,
       questionQueue,
-      currentQuestion,
-      currentAnswer
+      error,
     } = this.state;
     return (
       <div className="form-view">
@@ -133,20 +165,8 @@ export class FormView extends Component {
           finalOutcome={finalOutcome}
           goToPreviousQuestion={this.goToPreviousQuestion}
         />
-        {!finalOutcome ? (
-          <QuestionView
-            currentQuestion={currentQuestion}
-            currentAnswer={currentAnswer}
-            handleOptionChange={this.handleOptionChange}
-            goToNextQuestion={this.goToNextQuestion}
-          />
-        ) : (
-          <OutcomeView
-            restartProcess={this.restartProcess}
-            finalOutcome={finalOutcome}
-          />
-        )}
+        { !error ? this.displaySuccessView() : <NotFoundView retryClickEvent={this.getQuestionListFromAPI}/>}
       </div>
-    );
+    )
   }
 }

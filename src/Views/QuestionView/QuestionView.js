@@ -4,6 +4,7 @@ import { RadioButton } from "../../Components/RadioButton/RadioButton";
 import { CustomButton } from "../../Components/CustomButton/CustomButton";
 import { ReactComponent as GrayRectangle } from "../../icons/ic-rectangle-gray.svg";
 import PropTypes from "prop-types";
+import { getLabel } from "../../translationFile";
 
 export const QuestionView = props => {
   const {
@@ -33,8 +34,8 @@ export const QuestionView = props => {
         id="next-button"
         isDisabled={!currentAnswer}
         clickEvent={goToNextQuestion}
-        buttonText="Next"
-        hoverText={!currentAnswer ? 'Please select an option before going to the next question' : 'Click here to go to the next question'}
+        buttonText={getLabel('label.next')}
+        hoverText={!currentAnswer ? getLabel('label.hover.next_button_disabled') : getLabel('label.hover.next_button_enabled')}
       />
     </div>
   ) : (

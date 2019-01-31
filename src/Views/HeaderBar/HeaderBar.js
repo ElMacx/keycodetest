@@ -3,6 +3,7 @@ import "./HeaderBar.css";
 import { ProgressBar } from "../../Components/ProgressBar/ProgressBar";
 import { ReactComponent as LeftArrow } from "../../icons/ic-arrow-left-green.svg";
 import PropTypes from "prop-types";
+import { getLabel } from "../../translationFile";
 
 export const HeaderBar = props => {
   const {
@@ -24,7 +25,7 @@ export const HeaderBar = props => {
       >
         <LeftArrow />
       </button>
-      <p id="app-title">Heartburn Checker</p>
+      <p id="app-title">{getLabel('title.app_name')}</p>
       <ProgressBar percentage={progressBarPercentage} />
     </div>
   );

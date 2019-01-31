@@ -37,7 +37,6 @@ export class RadioButton extends Component {
           <input
             className="radio-button-input"
             type="radio"
-            name="name"
             id={ans.id}
             onChange={handleOptionChange}
           />

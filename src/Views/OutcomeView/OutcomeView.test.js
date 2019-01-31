@@ -13,7 +13,7 @@ describe('OutcomeView', () => {
     const wrapper = shallow(<OutcomeView finalOutcome={{}} />);
     expect(wrapper.find("button")).toBeDefined();
   });
-  it("Book an apointment should be defined", () => {
+  it("Book an apointment should call the right method", () => {
     const mockCallBack = jest.fn()
     const wrapper = shallow(<OutcomeView finalOutcome={{}} restartProcess={mockCallBack}/>);
     wrapper.find("#restart-text").simulate('click');

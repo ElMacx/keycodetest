@@ -1,0 +1,14 @@
+.not-found-view {
+  margin: 50% 15px 0 20px;
+}
+
+.not-found-view p {
+  font-weight: 800;
+  font-size: 25px;
+  color: #686868;
+  margin: 0;
+}
+
+.retry-button-margin {
+  margin-top: 25px;
+}
