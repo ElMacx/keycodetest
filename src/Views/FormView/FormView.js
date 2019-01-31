@@ -55,7 +55,7 @@ export class FormView extends Component {
       patientScore:
         this.state.patientScore -
         previousQuestion.question.answers.find(
-          e => e.id === previousQuestion.idAnswer
+          q => q.id === previousQuestion.idAnswer
         ).score
     });
   };
@@ -81,7 +81,7 @@ export class FormView extends Component {
     } else {
       //if multiple answers possible
       nextQuestionId = currentQuestion.next.find(
-        e => e.answered === currentAnswer.id
+        a => a.answered === currentAnswer.id
       ).next_question;
     }
     this.setState({
@@ -97,7 +97,7 @@ export class FormView extends Component {
   handleOptionChange = event => {
     this.setState({
       currentAnswer: this.state.currentQuestion.answers.find(
-        e => e.id === event.currentTarget.id
+        a => a.id === event.currentTarget.id
       )
     });
   };
@@ -116,7 +116,7 @@ export class FormView extends Component {
   getProgressBarPercentage = () => {
     const questionIndex = this.state.currentQuestion
       ? this.state.questions
-          .map(e => e.id)
+          .map(q => q.id)
           .indexOf(this.state.currentQuestion.id)
       : -1;
     if (questionIndex === -1) {
