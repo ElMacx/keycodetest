@@ -28,8 +28,7 @@
 }
 
 .radio-button-label {
-  position: absolute;
-  top: 15px;
-  right: 30px;
   cursor: pointer;
+  line-height: 50px;
+  padding: 0;
 }
