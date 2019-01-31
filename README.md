@@ -1,6 +1,6 @@
 # Kry/Livi Code Test
 
-This a react app coded for the Kry Code Test. This app ask your some questions and determine if you need to see a doctor or not.
+This a react app coded for the Kry Code Test. This app ask you some questions and determine if you need to see a doctor or not.
 
 ## Available Scripts
 
